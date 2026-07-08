@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>相册拾光 - 本机相册整理与照片筛选</title>
+  <meta name="description" content="相册拾光是一款本机相册整理与照片筛选工具，帮助你按日期范围筛选照片，并把保存合集与删除队列分开确认。">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="photo-wall" aria-hidden="true">
+        <span class="tile tile-a"></span>
+        <span class="tile tile-b"></span>
+        <span class="tile tile-c"></span>
+        <span class="tile tile-d"></span>
+        <span class="tile tile-e"></span>
+        <span class="tile tile-f"></span>
+        <span class="tile tile-g"></span>
+        <span class="tile tile-h"></span>
+      </div>
+
+      <nav class="topbar" aria-label="页面导航">
+        <a class="brand" href="#hero-title" aria-label="相册拾光首页">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <span>相册拾光</span>
+        </a>
+        <div class="nav-links">
+          <a href="#features">功能</a>
+          <a href="#support">支持</a>
+          <a href="#privacy">隐私政策</a>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">iPhone / iPad 本机照片整理</p>
+          <h1 id="hero-title">相册拾光</h1>
+          <p class="subtitle">本机相册整理与照片筛选</p>
+          <p class="hero-body">按时间范围整理相册，在本机筛选清晰、明亮、有主体的照片，并把标记保存和删除队列分开确认。</p>
+          <div class="hero-actions" id="download">
+            <a class="app-store-button" href="#" aria-label="App Store 下载，相册拾光链接上线后替换">
+              <span class="store-icon" aria-hidden="true"></span>
+              <span>App Store 下载</span>
+            </a>
+            <span class="placeholder-note">App Store 链接上线后替换下载地址。</span>
+          </div>
+          <div class="hero-points" aria-label="核心特点">
+            <span>本机分析</span>
+            <span>自定义日期</span>
+            <span>卡片式确认</span>
+          </div>
+        </div>
+
+        <div class="phone-stage" aria-label="相册拾光卡片式照片筛选示意">
+          <div class="phone-glow" aria-hidden="true"></div>
+          <div class="phone">
+            <div class="phone-speaker" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="app-header">
+                <span>今日候选</span>
+                <strong>36 张</strong>
+              </div>
+              <div class="review-card">
+                <div class="mock-photo">
+                  <span class="sun"></span>
+                  <span class="ridge ridge-one"></span>
+                  <span class="ridge ridge-two"></span>
+                </div>
+                <div class="score-row">
+                  <span class="photo-chip">清晰 92</span>
+                  <span class="photo-chip mint">主体明确</span>
+                </div>
+              </div>
+              <div class="decision-row">
+                <span>保存合集</span>
+                <span>删除队列</span>
+              </div>
+              <div class="export-row">
+                <span>保存到相册</span>
+                <span>系统分享</span>
+                <span>存到文件</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro" aria-labelledby="intro-title">
+      <p class="eyebrow">整理，而不是替你冒险决定</p>
+      <h2 id="intro-title">每一步都留给你确认</h2>
+      <p>相册拾光帮助你从大量照片中挑出更值得保留的画面。App 会在设备本机生成候选合集，你可以逐张确认保存、跳过或加入删除队列，最后再分别处理导出与删除确认。</p>
+    </section>
+
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="section-heading">
+        <p class="eyebrow">核心功能</p>
+        <h2 id="features-title">为定期整理相册而设计</h2>
+      </div>
+      <div class="feature-grid">
+        <article>
+          <span class="feature-icon local" aria-hidden="true"></span>
+          <h3>本机分析照片质量</h3>
+          <p>在设备本机分析清晰度、光线和主体，不上传照片。</p>
+        </article>
+        <article>
+          <span class="feature-icon calendar" aria-hidden="true"></span>
+          <h3>自定义日期范围筛选</h3>
+          <p>按最近时间或自定义起止日期筛选照片，适合周末、旅行和阶段性整理。</p>
+        </article>
+        <article>
+          <span class="feature-icon card" aria-hidden="true"></span>
+          <h3>卡片式逐张确认</h3>
+          <p>用卡片式流程查看候选照片，标记保存、跳过或加入删除队列。</p>
+        </article>
+        <article>
+          <span class="feature-icon split-icon" aria-hidden="true"></span>
+          <h3>保存合集与删除队列分开处理</h3>
+          <p>保存和删除分开确认，取消任意一步都不会清空另一边的选择。</p>
+        </article>
+        <article>
+          <span class="feature-icon export" aria-hidden="true"></span>
+          <h3>多种导出方式</h3>
+          <p>支持保存到相册、系统分享和存到文件，按你的当前场景处理结果。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section workflow" aria-labelledby="workflow-title">
+      <div class="section-heading">
+        <p class="eyebrow">使用流程</p>
+        <h2 id="workflow-title">从时间范围到最终处理</h2>
+      </div>
+      <div class="steps">
+        <article>
+          <span>01</span>
+          <h3>选择日期范围</h3>
+          <p>从最近照片或自定义起止日期开始整理。</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>本机生成候选</h3>
+          <p>在设备上分析照片质量，生成可逐张查看的候选合集。</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>分别确认结果</h3>
+          <p>保存合集、删除队列和导出操作分开处理，保持可控。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section support" id="support" aria-labelledby="support-title">
+      <div>
+        <p class="eyebrow">技术支持</p>
+        <h2 id="support-title">需要帮助时，请联系开发者</h2>
+        <p>如果你在使用相册拾光时遇到问题，或需要反馈照片整理体验，请通过邮箱联系。</p>
+      </div>
+      <a class="support-link" href="mailto:544905484@qq.com">544905484@qq.com</a>
+    </section>
+
+    <section class="section policy" id="privacy" aria-labelledby="privacy-title">
+      <p class="eyebrow">生效日期：2026-07-06</p>
+      <h2 id="privacy-title">隐私政策</h2>
+      <p>相册拾光是一款本机相册整理工具，用于帮助用户筛选和查看自己照片库中的照片。当前版本不收集来自 App 的个人数据。</p>
+
+      <h3>照片访问与本机分析</h3>
+      <p>相册拾光会请求访问照片库，以提供按日期筛选、照片质量分析、预览、标记保存和删除队列确认等核心功能。经用户授权后，App 可在设备本机读取照片元数据、缩略图和图像内容。照片分析在设备本机完成，当前版本不会将照片上传到开发者服务器。</p>
+
+      <h3>保存、分享与文件导出</h3>
+      <p>当用户选择保存标记照片时，App 可在用户照片库中创建或更新相册。当用户选择分享照片时，App 使用 iOS 系统分享表单；当用户选择存到文件时，App 使用 iOS 文档选择器。目标位置和任何数据传输由用户选择的 iOS 系统操作控制。</p>
+
+      <h3>删除队列</h3>
+      <p>相册拾光可以帮助用户查看加入删除队列的照片。当前版本会把保存决定和删除决定分开处理，以便用户有意识地确认每一步。</p>
+
+      <h3>数据收集、跟踪与第三方服务</h3>
+      <p>当前版本不需要账号，不包含广告 SDK，不包含第三方分析 SDK，不跟踪用户跨 App 或网站的活动，也不包含第三方崩溃上报 SDK。</p>
+
+      <h3>儿童隐私与政策更新</h3>
+      <p>相册拾光是通用工具类 App，不会有意收集儿童个人数据。如果未来版本加入云功能、账号、分析或其他数据收集，本隐私政策和 App Store 隐私信息会在发布前更新。</p>
+
+      <h3>联系方式</h3>
+      <p>隐私或技术支持问题请联系：<a href="mailto:544905484@qq.com">544905484@qq.com</a></p>
+    </section>
+  </main>
+</body>
+</html>
