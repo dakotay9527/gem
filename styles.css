@@ -276,51 +276,89 @@ h1 {
   margin-top: 34px;
 }
 
-.app-store-button {
+.android-download {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 54px;
-  padding: 0 22px;
+  gap: 13px;
+  min-height: 62px;
+  padding: 8px 22px;
   border: 1px solid rgba(255, 248, 239, .34);
   border-radius: var(--radius);
   background: linear-gradient(135deg, var(--coral), #ff9a5f 48%, var(--gold));
   color: #191006;
-  font-weight: 820;
   box-shadow: 0 16px 34px rgba(255, 122, 89, .28);
 }
 
-.app-store-button:hover,
-.app-store-button:focus-visible {
+.android-download:hover,
+.android-download:focus-visible {
   transform: translateY(-1px);
   box-shadow: 0 20px 42px rgba(255, 122, 89, .34);
 }
 
-.store-icon {
-  width: 19px;
-  height: 23px;
+.android-icon {
+  position: relative;
+  width: 30px;
+  height: 24px;
+  margin-top: 6px;
   border-radius: 9px 9px 5px 5px;
   background: #191006;
-  position: relative;
 }
 
-.store-icon::before {
+.android-icon::before {
   content: "";
   position: absolute;
-  width: 9px;
-  height: 9px;
-  right: -1px;
-  top: -5px;
-  border-radius: 999px 999px 999px 0;
-  background: #191006;
-  transform: rotate(-25deg);
+  left: 7px;
+  top: 7px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 13px 0 0 var(--gold);
 }
 
-.placeholder-note {
-  max-width: 230px;
-  color: rgba(255, 248, 239, .64);
+.android-icon::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: -6px;
+  height: 9px;
+  border-top: 2px solid #191006;
+  border-radius: 50%;
+}
+
+.download-label {
+  display: grid;
+  line-height: 1.05;
+}
+
+.download-label small {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.download-label strong {
+  margin-top: 4px;
+  font-size: 18px;
+  font-weight: 850;
+}
+
+.download-copy {
+  display: grid;
+  gap: 3px;
+}
+
+.download-meta {
+  color: var(--text);
   font-size: 14px;
+  font-weight: 760;
+}
+
+.ios-note {
+  color: rgba(255, 248, 239, .64);
+  font-size: 13px;
   line-height: 1.35;
 }
 
@@ -683,6 +721,89 @@ h1 {
   padding-top: 28px;
 }
 
+.install {
+  padding-top: 28px;
+}
+
+.install-guide {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.install-guide article,
+.checksum-panel {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(180deg, rgba(255, 248, 239, .08), rgba(255, 248, 239, .035)),
+    rgba(17, 19, 25, .84);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, .22);
+}
+
+.install-guide article > span {
+  display: block;
+  margin-bottom: 24px;
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 820;
+}
+
+.install-guide h3,
+.checksum-panel strong {
+  margin: 0;
+  color: var(--text);
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.install-guide article p,
+.checksum-panel p {
+  margin: 10px 0 0;
+  color: rgba(255, 248, 239, .73);
+  font-size: 15px;
+  line-height: 1.58;
+}
+
+.checksum-panel {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(220px, .7fr) minmax(0, 1.4fr) auto;
+  align-items: center;
+  gap: 18px;
+}
+
+.checksum {
+  display: block;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(136, 223, 192, .3);
+  border-radius: 6px;
+  background: rgba(7, 9, 13, .64);
+  color: var(--mint);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+
+.checksum-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid rgba(136, 223, 192, .42);
+  border-radius: var(--radius);
+  color: var(--mint);
+  font-size: 14px;
+  font-weight: 760;
+  white-space: nowrap;
+}
+
 .steps {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -776,6 +897,10 @@ h1 {
   .support {
     grid-template-columns: 1fr;
   }
+
+  .checksum-panel {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
@@ -819,12 +944,12 @@ h1 {
     flex-direction: column;
   }
 
-  .app-store-button {
+  .android-download {
     width: 100%;
   }
 
-  .placeholder-note {
-    max-width: none;
+  .download-copy {
+    width: 100%;
   }
 
   .phone-stage {
@@ -840,12 +965,15 @@ h1 {
   }
 
   .feature-grid,
-  .steps {
+  .steps,
+  .install-guide {
     grid-template-columns: 1fr;
   }
 
   .feature-grid article,
-  .steps article {
+  .steps article,
+  .install-guide article,
+  .checksum-panel {
     padding: 18px;
   }
 
@@ -855,9 +983,10 @@ h1 {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .app-store-button,
+  .android-download,
   .nav-links a,
-  .support-link {
+  .support-link,
+  .checksum-link {
     transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
   }
 }

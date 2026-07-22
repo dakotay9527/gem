@@ -12,12 +12,16 @@ APK_SHA256 = "45cecf8a0eff0941af60edee0f6bf8f44db891200c3aae917fd5cc380b4e6f48"
 class DownloadLinkParser(HTMLParser):
     def __init__(self):
         super().__init__()
-        self.download_links = []
+        self.apk_download_links = []
 
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
-        if tag == "a" and "download" in values:
-            self.download_links.append(values)
+        if (
+            tag == "a"
+            and "download" in values
+            and values.get("href", "").endswith(".apk")
+        ):
+            self.apk_download_links.append(values)
 
 
 class SiteReleaseTests(unittest.TestCase):
@@ -34,8 +38,8 @@ class SiteReleaseTests(unittest.TestCase):
         parser = DownloadLinkParser()
         parser.feed(html)
 
-        self.assertEqual(len(parser.download_links), 1)
-        self.assertEqual(parser.download_links[0]["href"], f"downloads/{APK_NAME}")
+        self.assertEqual(len(parser.apk_download_links), 1)
+        self.assertEqual(parser.apk_download_links[0]["href"], f"downloads/{APK_NAME}")
         for text in ("Android 10–16", "v1.0.0", "38 MB", APK_SHA256, "安卓安装说明"):
             self.assertIn(text, html)
         self.assertNotIn('href="#"', html)
