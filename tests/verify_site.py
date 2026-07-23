@@ -44,15 +44,34 @@ class SiteReleaseTests(unittest.TestCase):
 
         self.assertEqual(len(parser.apk_download_links), 1)
         self.assertEqual(parser.apk_download_links[0]["href"], f"downloads/{APK_NAME}")
-        self.assertIn('class="android-download" href="#android-download"', html)
+        self.assertIn('class="platform-downloads"', html)
+        self.assertIn(
+            'class="platform-download android-download" href="#android-download"',
+            html,
+        )
+        self.assertIn(
+            f'class="platform-download ios-download" href="{APP_STORE_URL}"',
+            html,
+        )
         self.assertIn('class="qr-download-panel" id="android-download"', html)
         self.assertIn('class="qr-download-panel"', html)
         self.assertIn('src="assets/android-download-qr.png"', html)
         self.assertIn(f'href="{APK_URL}"', html)
         self.assertIn(f'href="{APP_STORE_URL}"', html)
-        self.assertIn(f"iPhone / iPad · App Store {IOS_VERSION}", html)
+        self.assertIn("App Store 下载", html)
+        self.assertIn("iPhone / iPad", html)
+        self.assertIn(IOS_VERSION, html)
         self.assertIn("iOS 17+", html)
         self.assertNotIn("App Store 敬请期待", html)
+        self.assertLess(
+            html.index('class="section support"'),
+            html.index('class="section install"'),
+        )
+        self.assertLess(
+            html.index('class="section install"'),
+            html.index('class="section policy"'),
+        )
+        self.assertEqual(html.count('class="section install"'), 1)
         for text in ("Android 10–16", "v1.0.0", "38 MB", APK_SHA256, "安卓安装说明"):
             self.assertIn(text, html)
         self.assertNotIn('href="#"', html)
@@ -72,15 +91,19 @@ class SiteReleaseTests(unittest.TestCase):
 
         for selector in (
             ".android-download",
-            ".download-meta",
+            ".download-label > span",
             ".checksum",
             ".install-guide",
             ".qr-download-panel",
+            ".platform-downloads",
+            ".platform-download",
+            ".ios-download",
+            ".ios-icon",
         ):
             self.assertIn(selector, css)
         self.assertIn("overflow-wrap: anywhere", css)
         self.assertIn("scroll-margin-top", css)
-        self.assertIn(".ios-note:hover", css)
+        self.assertIn("grid-template-columns: repeat(2, minmax(0, 1fr))", css)
 
 
 if __name__ == "__main__":

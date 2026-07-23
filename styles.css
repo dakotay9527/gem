@@ -268,35 +268,61 @@ h1 {
   font-size: clamp(17px, 1.7vw, 22px);
 }
 
-.hero-actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 14px 18px;
+.platform-downloads {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: min(100%, 650px);
   margin-top: 34px;
 }
 
-.android-download {
-  display: inline-flex;
+.platform-download {
+  display: flex;
   align-items: center;
-  justify-content: center;
   gap: 13px;
-  min-height: 62px;
-  padding: 8px 22px;
+  min-width: 0;
+  min-height: 92px;
+  padding: 12px 16px;
   border: 1px solid rgba(255, 248, 239, .34);
   border-radius: var(--radius);
+}
+
+.android-download {
   background: linear-gradient(135deg, var(--coral), #ff9a5f 48%, var(--gold));
   color: #191006;
   box-shadow: 0 16px 34px rgba(255, 122, 89, .28);
 }
 
+.ios-download {
+  background: linear-gradient(135deg, #17231f, #254a3d 56%, #3b7a65);
+  color: var(--text);
+  box-shadow: 0 16px 34px rgba(20, 73, 59, .32);
+}
+
+.android-download:hover,
+.android-download:focus-visible,
+.ios-download:hover,
+.ios-download:focus-visible {
+  transform: translateY(-1px);
+}
+
 .android-download:hover,
 .android-download:focus-visible {
-  transform: translateY(-1px);
   box-shadow: 0 20px 42px rgba(255, 122, 89, .34);
 }
 
+.ios-download:hover,
+.ios-download:focus-visible {
+  box-shadow: 0 20px 42px rgba(39, 116, 94, .4);
+}
+
+.platform-download:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 4px;
+}
+
 .android-icon {
+  flex: 0 0 auto;
   position: relative;
   width: 30px;
   height: 24px;
@@ -328,8 +354,42 @@ h1 {
   border-radius: 50%;
 }
 
+.ios-icon {
+  flex: 0 0 auto;
+  position: relative;
+  width: 27px;
+  height: 40px;
+  border: 2px solid var(--mint);
+  border-radius: 7px;
+  box-shadow: inset 0 0 0 1px rgba(255, 248, 239, .1);
+}
+
+.ios-icon::before,
+.ios-icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  background: var(--mint);
+  transform: translateX(-50%);
+}
+
+.ios-icon::before {
+  top: 4px;
+  width: 8px;
+  height: 2px;
+  border-radius: 999px;
+}
+
+.ios-icon::after {
+  bottom: 4px;
+  width: 9px;
+  height: 2px;
+  border-radius: 999px;
+}
+
 .download-label {
   display: grid;
+  min-width: 0;
   line-height: 1.05;
 }
 
@@ -345,44 +405,12 @@ h1 {
   font-weight: 850;
 }
 
-.download-copy {
-  display: grid;
-  gap: 3px;
-}
-
-.download-meta {
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 760;
-}
-
-.ios-note {
-  display: grid;
-  gap: 1px;
-  width: fit-content;
-  border-radius: 4px;
-  color: rgba(255, 248, 239, .64);
-  line-height: 1.35;
-}
-
-.ios-note strong {
-  color: rgba(255, 248, 239, .78);
-  font-size: 13px;
-  font-weight: 720;
-}
-
-.ios-note span {
-  font-size: 12px;
-}
-
-.ios-note:hover strong,
-.ios-note:focus-visible strong {
-  color: var(--mint);
-}
-
-.ios-note:focus-visible {
-  outline: 2px solid var(--mint);
-  outline-offset: 4px;
+.download-label > span {
+  margin-top: 7px;
+  font-size: 10px;
+  font-weight: 680;
+  line-height: 1.25;
+  opacity: .76;
 }
 
 .hero-points {
@@ -1045,16 +1073,11 @@ h1 {
     font-size: 17px;
   }
 
-  .hero-actions {
-    align-items: flex-start;
-    flex-direction: column;
+  .platform-downloads {
+    grid-template-columns: 1fr;
   }
 
-  .android-download {
-    width: 100%;
-  }
-
-  .download-copy {
+  .platform-download {
     width: 100%;
   }
 
@@ -1105,11 +1128,10 @@ h1 {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .android-download,
+  .platform-download,
   .nav-links a,
   .support-link,
   .checksum-link,
-  .ios-note strong,
   .qr-download-copy > a {
     transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
   }

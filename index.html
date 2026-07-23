@@ -40,21 +40,23 @@
           <h1 id="hero-title">相册拾光</h1>
           <p class="subtitle">本机相册整理与照片筛选</p>
           <p class="hero-body">按时间范围整理相册，在本机筛选清晰、明亮、有主体的照片，并把标记保存和删除队列分开确认。</p>
-          <div class="hero-actions" id="download">
-            <a class="android-download" href="#android-download" aria-label="前往相册拾光 Android v1.0.0 扫码下载区">
+          <div class="platform-downloads" id="download">
+            <a class="platform-download android-download" href="#android-download" aria-label="前往相册拾光 Android v1.0.0 扫码下载区">
               <span class="android-icon" aria-hidden="true"></span>
               <span class="download-label">
                 <small>扫码下载</small>
                 <strong>Android 版</strong>
+                <span>Android 10–16 · v1.0.0 · 38 MB</span>
               </span>
             </a>
-            <div class="download-copy">
-              <span class="download-meta">Android 10–16 · v1.0.0 · 38 MB</span>
-              <a class="ios-note" href="https://apps.apple.com/app/id6788588179" aria-label="前往 App Store 下载相册拾光 iOS v1.1">
-                <strong>iPhone / iPad · App Store v1.1</strong>
-                <span>iOS 17+ · 已上线</span>
-              </a>
-            </div>
+            <a class="platform-download ios-download" href="https://apps.apple.com/app/id6788588179" aria-label="前往 App Store 下载相册拾光 iOS v1.1">
+              <span class="ios-icon" aria-hidden="true"></span>
+              <span class="download-label">
+                <small>App Store 下载</small>
+                <strong>iPhone / iPad</strong>
+                <span>iOS 17+ · v1.1</span>
+              </span>
+            </a>
           </div>
           <div class="hero-points" aria-label="核心特点">
             <span>本机分析</span>
@@ -102,51 +104,6 @@
       <p class="eyebrow">整理，而不是替你冒险决定</p>
       <h2 id="intro-title">每一步都留给你确认</h2>
       <p>相册拾光帮助你从大量照片中挑出更值得保留的画面。App 会在设备本机生成候选合集，你可以逐张确认保存、跳过或加入删除队列，最后再分别处理导出与删除确认。</p>
-    </section>
-
-    <section class="section install" id="install" aria-labelledby="install-title">
-      <div class="section-heading">
-        <p class="eyebrow">Android 正式版</p>
-        <h2 id="install-title">安卓安装说明</h2>
-        <p>安装包仅从本官网提供。首次侧载安装时，Android 会要求你确认当前浏览器的安装权限。</p>
-      </div>
-      <div class="install-guide">
-        <article>
-          <span>01</span>
-          <h3>下载安装包</h3>
-          <p>使用手机扫描下方二维码，或点击“无法扫码？直接下载”，等待 38 MB 的 APK 下载完成。</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>允许本次安装</h3>
-          <p>打开下载文件；如系统提示，请允许当前浏览器安装未知应用。</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>完成并开始使用</h3>
-          <p>确认安装后打开相册拾光，按系统提示授予照片访问权限。</p>
-        </article>
-        <div class="qr-download-panel" id="android-download">
-          <a class="qr-image-link" href="https://dakotay9527.github.io/gem/downloads/photo-curator-android-1.0.0.apk" aria-label="扫码或点击下载相册拾光 Android v1.0.0">
-            <img src="assets/android-download-qr.png" width="696" height="696" alt="相册拾光 Android v1.0.0 官网 APK 下载二维码">
-          </a>
-          <div class="qr-download-copy">
-            <p class="eyebrow">电脑访问请扫码</p>
-            <h3>手机扫码下载</h3>
-            <p>使用手机相机或浏览器扫描二维码，直接从相册拾光官网下载 Android v1.0.0 安装包。</p>
-            <span>Android 10–16 · v1.0.0 · 38 MB</span>
-            <a href="downloads/photo-curator-android-1.0.0.apk" download aria-label="直接下载相册拾光 Android v1.0.0 安装包">无法扫码？直接下载</a>
-          </div>
-        </div>
-        <div class="checksum-panel">
-          <div>
-            <strong>安装包 SHA-256</strong>
-            <p>如需核验文件完整性，请将计算结果与下面的校验值逐字比较。</p>
-          </div>
-          <code class="checksum">45cecf8a0eff0941af60edee0f6bf8f44db891200c3aae917fd5cc380b4e6f48</code>
-          <a class="checksum-link" href="downloads/photo-curator-android-1.0.0.apk.sha256" download>下载校验文件</a>
-        </div>
-      </div>
     </section>
 
     <section class="section" id="features" aria-labelledby="features-title">
@@ -214,6 +171,51 @@
         <p>如果你在使用相册拾光时遇到问题，或需要反馈照片整理体验，请通过邮箱联系。</p>
       </div>
       <a class="support-link" href="mailto:544905484@qq.com">544905484@qq.com</a>
+    </section>
+
+    <section class="section install" id="install" aria-labelledby="install-title">
+      <div class="section-heading">
+        <p class="eyebrow">Android 正式版</p>
+        <h2 id="install-title">安卓安装说明</h2>
+        <p>安装包仅从本官网提供。首次侧载安装时，Android 会要求你确认当前浏览器的安装权限。</p>
+      </div>
+      <div class="install-guide">
+        <article>
+          <span>01</span>
+          <h3>下载安装包</h3>
+          <p>使用手机扫描下方二维码，或点击“无法扫码？直接下载”，等待 38 MB 的 APK 下载完成。</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>允许本次安装</h3>
+          <p>打开下载文件；如系统提示，请允许当前浏览器安装未知应用。</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>完成并开始使用</h3>
+          <p>确认安装后打开相册拾光，按系统提示授予照片访问权限。</p>
+        </article>
+        <div class="qr-download-panel" id="android-download">
+          <a class="qr-image-link" href="https://dakotay9527.github.io/gem/downloads/photo-curator-android-1.0.0.apk" aria-label="扫码或点击下载相册拾光 Android v1.0.0">
+            <img src="assets/android-download-qr.png" width="696" height="696" alt="相册拾光 Android v1.0.0 官网 APK 下载二维码">
+          </a>
+          <div class="qr-download-copy">
+            <p class="eyebrow">电脑访问请扫码</p>
+            <h3>手机扫码下载</h3>
+            <p>使用手机相机或浏览器扫描二维码，直接从相册拾光官网下载 Android v1.0.0 安装包。</p>
+            <span>Android 10–16 · v1.0.0 · 38 MB</span>
+            <a href="downloads/photo-curator-android-1.0.0.apk" download aria-label="直接下载相册拾光 Android v1.0.0 安装包">无法扫码？直接下载</a>
+          </div>
+        </div>
+        <div class="checksum-panel">
+          <div>
+            <strong>安装包 SHA-256</strong>
+            <p>如需核验文件完整性，请将计算结果与下面的校验值逐字比较。</p>
+          </div>
+          <code class="checksum">45cecf8a0eff0941af60edee0f6bf8f44db891200c3aae917fd5cc380b4e6f48</code>
+          <a class="checksum-link" href="downloads/photo-curator-android-1.0.0.apk.sha256" download>下载校验文件</a>
+        </div>
+      </div>
     </section>
 
     <section class="section policy" id="privacy" aria-labelledby="privacy-title">
