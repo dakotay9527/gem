@@ -357,9 +357,32 @@ h1 {
 }
 
 .ios-note {
+  display: grid;
+  gap: 1px;
+  width: fit-content;
+  border-radius: 4px;
   color: rgba(255, 248, 239, .64);
-  font-size: 13px;
   line-height: 1.35;
+}
+
+.ios-note strong {
+  color: rgba(255, 248, 239, .78);
+  font-size: 13px;
+  font-weight: 720;
+}
+
+.ios-note span {
+  font-size: 12px;
+}
+
+.ios-note:hover strong,
+.ios-note:focus-visible strong {
+  color: var(--mint);
+}
+
+.ios-note:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 4px;
 }
 
 .hero-points {
@@ -782,6 +805,7 @@ h1 {
     linear-gradient(135deg, rgba(255, 122, 89, .09), rgba(136, 223, 192, .06)),
     rgba(17, 19, 25, .9);
   box-shadow: 0 18px 46px rgba(0, 0, 0, .24);
+  scroll-margin-top: 28px;
 }
 
 .qr-image-link {
@@ -1085,6 +1109,7 @@ h1 {
   .nav-links a,
   .support-link,
   .checksum-link,
+  .ios-note strong,
   .qr-download-copy > a {
     transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
   }
