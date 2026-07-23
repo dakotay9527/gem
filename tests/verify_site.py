@@ -9,6 +9,8 @@ APK_NAME = "photo-curator-android-1.0.0.apk"
 APK_SHA256 = "45cecf8a0eff0941af60edee0f6bf8f44db891200c3aae917fd5cc380b4e6f48"
 APK_URL = f"https://dakotay9527.github.io/gem/downloads/{APK_NAME}"
 QR_PATH = ROOT / "assets" / "android-download-qr.png"
+APP_STORE_URL = "https://apps.apple.com/app/id6788588179"
+IOS_VERSION = "v1.1"
 
 
 class DownloadLinkParser(HTMLParser):
@@ -42,9 +44,15 @@ class SiteReleaseTests(unittest.TestCase):
 
         self.assertEqual(len(parser.apk_download_links), 1)
         self.assertEqual(parser.apk_download_links[0]["href"], f"downloads/{APK_NAME}")
+        self.assertIn('class="android-download" href="#android-download"', html)
+        self.assertIn('class="qr-download-panel" id="android-download"', html)
         self.assertIn('class="qr-download-panel"', html)
         self.assertIn('src="assets/android-download-qr.png"', html)
         self.assertIn(f'href="{APK_URL}"', html)
+        self.assertIn(f'href="{APP_STORE_URL}"', html)
+        self.assertIn(f"iPhone / iPad · App Store {IOS_VERSION}", html)
+        self.assertIn("iOS 17+", html)
+        self.assertNotIn("App Store 敬请期待", html)
         for text in ("Android 10–16", "v1.0.0", "38 MB", APK_SHA256, "安卓安装说明"):
             self.assertIn(text, html)
         self.assertNotIn('href="#"', html)
@@ -71,6 +79,8 @@ class SiteReleaseTests(unittest.TestCase):
         ):
             self.assertIn(selector, css)
         self.assertIn("overflow-wrap: anywhere", css)
+        self.assertIn("scroll-margin-top", css)
+        self.assertIn(".ios-note:hover", css)
 
 
 if __name__ == "__main__":
