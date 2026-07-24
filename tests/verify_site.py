@@ -11,6 +11,14 @@ APK_URL = f"https://dakotay9527.github.io/gem/downloads/{APK_NAME}"
 QR_PATH = ROOT / "assets" / "android-download-qr.png"
 APP_STORE_URL = "https://apps.apple.com/app/id6788588179"
 IOS_VERSION = "v1.1"
+APP_ASSETS = {
+    "app-icon.png": (256, 256),
+    "confirm-results.jpg": (1000, 1400),
+    "range-score.jpg": (1000, 1400),
+    "analysis-progress.jpg": (1000, 1400),
+    "card-review.jpg": (1000, 1400),
+    "android-range.png": (700, 1400),
+}
 
 
 class DownloadLinkParser(HTMLParser):
@@ -29,6 +37,19 @@ class DownloadLinkParser(HTMLParser):
 
 
 class SiteReleaseTests(unittest.TestCase):
+    def test_real_app_assets_are_published(self):
+        import cv2
+
+        asset_dir = ROOT / "assets" / "app"
+        for name, (minimum_width, minimum_height) in APP_ASSETS.items():
+            path = asset_dir / name
+            self.assertTrue(path.is_file(), name)
+            image = cv2.imread(str(path))
+            self.assertIsNotNone(image, name)
+            height, width = image.shape[:2]
+            self.assertGreaterEqual(width, minimum_width, name)
+            self.assertGreaterEqual(height, minimum_height, name)
+
     def test_signed_apk_and_checksum_are_published(self):
         apk = ROOT / "downloads" / APK_NAME
         checksum = apk.with_suffix(apk.suffix + ".sha256")
@@ -76,6 +97,31 @@ class SiteReleaseTests(unittest.TestCase):
             self.assertIn(text, html)
         self.assertNotIn('href="#"', html)
 
+    def test_page_uses_real_app_imagery_instead_of_mock_phone_ui(self):
+        html = (ROOT / "index.html").read_text()
+
+        for name in APP_ASSETS:
+            self.assertIn(f"assets/app/{name}", html)
+        for fragment in (
+            'class="app-brand"',
+            'class="hero-device-showcase"',
+            'id="experience"',
+            'class="device-gallery"',
+            'class="device-shot',
+        ):
+            self.assertIn(fragment, html)
+        for obsolete_fragment in (
+            "phone-stage",
+            "phone-screen",
+            "mock-photo",
+            "photo-wall",
+            "tile tile-",
+        ):
+            self.assertNotIn(obsolete_fragment, html)
+        self.assertGreaterEqual(html.count('class="device-shot'), 5)
+        self.assertIn('fetchpriority="high"', html)
+        self.assertGreaterEqual(html.count('loading="lazy"'), 4)
+
     def test_qr_code_points_to_official_apk(self):
         import cv2
 
@@ -104,6 +150,37 @@ class SiteReleaseTests(unittest.TestCase):
         self.assertIn("overflow-wrap: anywhere", css)
         self.assertIn("scroll-margin-top", css)
         self.assertIn("grid-template-columns: repeat(2, minmax(0, 1fr))", css)
+
+    def test_styles_match_the_app_design_system(self):
+        css = (ROOT / "styles.css").read_text().lower()
+
+        for token in (
+            "--cream: #fff6e8",
+            "--paper: #fffdf7",
+            "--deep-ink: #2b2621",
+            "--coral: #f36f45",
+            "--mint: #8bd6c5",
+            "--gold: #f8c96b",
+            "--rose: #e66a70",
+        ):
+            self.assertIn(token, css)
+        for selector in (
+            ".app-brand",
+            ".hero-device-showcase",
+            ".privacy-promises",
+            ".device-gallery",
+            ".device-card",
+        ):
+            self.assertIn(selector, css)
+        for obsolete_selector in (
+            ".phone-stage",
+            ".phone-screen",
+            ".mock-photo",
+            ".photo-wall",
+            ".tile",
+        ):
+            self.assertNotIn(obsolete_selector, css)
+        self.assertIn("scroll-snap-type: x mandatory", css)
 
 
 if __name__ == "__main__":
